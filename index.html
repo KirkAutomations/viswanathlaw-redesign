@@ -352,7 +352,11 @@ a{color:#00305B}
 </div>
 <div class="contact-form reveal">
 <h3>Send Us a Message</h3>
-<form id="contactForm">
+<form id="contactForm" action="https://formsubmit.co/skvlaw@gmail.com" method="POST">
+<input type="hidden" name="_subject" value="New Contact from ViswanathLaw.com">
+<input type="hidden" name="_captcha" value="false">
+<input type="hidden" name="_next" value="https://viswanathlaw.com/?sent=1">
+<input type="text" name="_honey" style="display:none">
 <div class="form-group"><input type="text" name="name" placeholder="Your Name" required></div>
 <div class="form-group"><input type="email" name="email" placeholder="Your Email" required></div>
 <div class="form-group"><input type="tel" name="phone" placeholder="Your Phone"></div>
@@ -413,7 +417,8 @@ if(saved){document.documentElement.dataset.theme=saved;themes.forEach(d=>{d.clas
 themes.forEach(dot=>{dot.addEventListener('click',()=>{const t=dot.dataset.theme;document.documentElement.dataset.theme=t==='counsel'?'':t;localStorage.setItem('vl-theme',t);themes.forEach(d=>d.classList.toggle('active',d.dataset.theme===t))})});
 
 // Contact form
-document.getElementById('contactForm').addEventListener('submit',e=>{e.preventDefault();const btn=e.target.querySelector('.submit-btn');btn.textContent='Message Sent!';btn.style.background='#28a745';setTimeout(()=>{btn.textContent='Send Message';btn.style.background='';e.target.reset()},3000)});
+// Show success message if redirected back after form submit
+if(window.location.search.includes('sent=1')){const f=document.getElementById('contactForm');if(f){const msg=document.createElement('div');msg.style.cssText='background:#28a745;color:#fff;padding:16px;border-radius:8px;text-align:center;margin-bottom:16px;font-weight:600';msg.textContent='Message sent! We will be in touch shortly.';f.parentNode.insertBefore(msg,f);setTimeout(()=>msg.remove(),8000);history.replaceState(null,'',window.location.pathname)}}
 
 // Canvas particles
 const canvas=document.getElementById('bg-canvas'),ctx=canvas.getContext('2d');
