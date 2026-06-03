@@ -13,412 +13,310 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Open+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"LegalService","name":"Viswanath Law","alternateName":"SKV Firm, PLC","url":"https://viswanathlaw.com","telephone":"+18668781443","email":"contact@skvfirm.com","address":{"@type":"PostalAddress","streetAddress":"17520 W. 12 Mile Rd, Ste. 209","addressLocality":"Southfield","addressRegion":"MI","postalCode":"48076","addressCountry":"US"},"areaServed":{"@type":"Place","name":"Metro Detroit, Michigan"},"description":"Specializing in educating you throughout the legal process.","knowsAbout":["Estate Planning","Probate","Medicaid Planning","Veterans Benefits","Social Security Disability","Civil Law","Criminal Law","Family Law","Business Formation","Non-Profit Formation","Contracts","Real Estate"]}
+{"@context":"https://schema.org","@type":"LegalService","name":"Viswanath Law","alternateName":"SKV Firm, PLC","url":"https://viswanathlaw.com","telephone":"+18668781443","email":"contact@skvfirm.com","address":{"@type":"PostalAddress","streetAddress":"17520 W. 12 Mile Rd, Ste. 209","addressLocality":"Southfield","addressRegion":"MI","postalCode":"48076","addressCountry":"US"},"areaServed":{"@type":"Place","name":"Metro Detroit, Michigan"},"description":"Specializing in educating you throughout the legal process.","knowsAbout":["Estate Planning","Probate","Medicaid Planning","Veterans Benefits","Social Security Disability","Civil Law","Criminal Law","Family Law","Business Formation","Non-Profit Formation","Contracts","Real Estate"],"member":{"@type":"Person","name":"S. K. Viswanath","jobTitle":"Attorney"}}
 </script>
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 :root{
---bg:#00305B;--bg2:#0a1e3a;--surface:#0F4C85;--surface2:#163d66;
---text:#f0f4f8;--text2:#b8cce0;--accent:#c9a84c;--accent2:#e0c06a;
---glass:rgba(15,76,133,0.25);--glass-border:rgba(255,255,255,0.12);
---nav-bg:rgba(0,48,91,0.85);--shadow:0 8px 32px rgba(0,0,0,0.3);
---radius:12px;--font-heading:'Playfair Display',Georgia,serif;
---font-body:'Inter',-apple-system,sans-serif;
-}
-[data-theme="justice"]{
---bg:#1a1a2e;--bg2:#16213e;--surface:#2a2a4a;--surface2:#1e1e3a;
---text:#e8e8f0;--text2:#a0a0c0;--accent:#6c63ff;--accent2:#8b83ff;
---glass:rgba(42,42,74,0.3);--glass-border:rgba(108,99,255,0.2);
---nav-bg:rgba(26,26,46,0.9);
-}
-[data-theme="parchment"]{
---bg:#faf6f0;--bg2:#f0ebe0;--surface:#e8dfd0;--surface2:#d4c9b8;
---text:#2c1810;--text2:#5a4a3a;--accent:#8b4513;--accent2:#a0522d;
---glass:rgba(232,223,208,0.4);--glass-border:rgba(139,69,19,0.15);
---nav-bg:rgba(250,246,240,0.92);
+  --navy:#00305B;
+  --navy-dark:#001f3d;
+  --blue:#0F4C85;
+  --blue-light:#1a6bb5;
+  --teal:#41B7C4;
+  --light:#EAF4F6;
+  --white:#ffffff;
+  --text:#555555;
+  --text-dark:#333333;
+  --heading-font:'Playfair Display',Georgia,'Times New Roman',serif;
+  --body-font:'Open Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;
 }
 html{scroll-behavior:smooth;scroll-padding-top:80px}
-body{font-family:var(--font-body);background:var(--bg);color:var(--text);line-height:1.7;overflow-x:hidden;transition:background .4s,color .4s}
-h1,h2,h3,h4{font-family:var(--font-heading);font-weight:700;line-height:1.2}
-a{color:var(--accent);text-decoration:none;transition:color .3s}
-a:hover{color:var(--accent2)}
+body{font-family:var(--body-font);color:var(--text);line-height:1.7;background:var(--white);overflow-x:hidden}
+h1,h2,h3,h4{font-family:var(--heading-font);color:var(--navy);line-height:1.3}
+a{color:var(--blue);text-decoration:none;transition:color .3s}
+a:hover{color:var(--teal)}
+img{max-width:100%;height:auto}
 
-/* Loading */
-.loader{position:fixed;inset:0;z-index:9999;background:var(--bg);display:flex;align-items:center;justify-content:center;transition:opacity .5s}
-.loader.hide{opacity:0;pointer-events:none}
-.loader-icon{width:60px;height:60px;border:3px solid var(--glass-border);border-top-color:var(--accent);border-radius:50%;animation:spin 1s linear infinite}
-@keyframes spin{to{transform:rotate(360deg)}}
-
-/* Progress bar */
-.progress-bar{position:fixed;top:0;left:0;height:3px;background:var(--accent);z-index:10001;transition:width .1s;width:0}
-
-/* Cursor glow */
-.cursor-glow{position:fixed;width:300px;height:300px;border-radius:50%;pointer-events:none;z-index:9998;background:radial-gradient(circle,rgba(201,168,76,0.06),transparent 70%);transform:translate(-50%,-50%);display:none}
-@media(hover:hover){.cursor-glow{display:block}}
-
-/* Canvas */
-#bg-canvas{position:fixed;inset:0;z-index:0;pointer-events:none}
-
-/* Nav */
-.nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:var(--nav-bg);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--glass-border);transition:transform .3s,background .4s}
-.nav.hidden{transform:translateY(-100%)}
-.nav-inner{max-width:1200px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:72px}
-.nav-logo{font-family:var(--font-heading);font-size:1.4rem;font-weight:700;color:var(--text);letter-spacing:.5px}
-.nav-logo span{color:var(--accent)}
-.nav-links{display:flex;gap:28px;list-style:none}
-.nav-links a{font-size:.85rem;font-weight:500;color:var(--text2);letter-spacing:1px;text-transform:uppercase;transition:color .3s}
-.nav-links a:hover,.nav-links a.active{color:var(--accent)}
+/* ===== NAV ===== */
+.nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:var(--white);box-shadow:0 2px 12px rgba(0,0,0,.08);transition:box-shadow .3s}
+.nav-inner{max-width:1200px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:80px}
+.nav-logo{display:flex;align-items:center;gap:10px}
+.nav-logo img{height:36px;width:auto}
+.nav-links{display:flex;gap:32px;list-style:none}
+.nav-links a{font-size:.82rem;font-weight:600;color:var(--navy);letter-spacing:1.5px;text-transform:uppercase;transition:color .3s;position:relative}
+.nav-links a:hover,.nav-links a.active{color:var(--teal)}
+.nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;right:0;height:2px;background:var(--teal);transform:scaleX(0);transition:transform .3s}
+.nav-links a:hover::after{transform:scaleX(1)}
 .nav-toggle{display:none;background:none;border:none;cursor:pointer;padding:8px}
-.nav-toggle svg{width:24px;height:24px;stroke:var(--text);stroke-width:2;fill:none}
+.nav-toggle span{display:block;width:24px;height:2px;background:var(--navy);margin:5px 0;transition:all .3s}
 @media(max-width:768px){
-.nav-links{display:none;position:absolute;top:72px;left:0;right:0;flex-direction:column;background:var(--nav-bg);backdrop-filter:blur(20px);padding:20px 24px;gap:16px;border-bottom:1px solid var(--glass-border)}
-.nav-links.open{display:flex}
-.nav-toggle{display:block}
+  .nav-links{display:none;position:absolute;top:80px;left:0;right:0;flex-direction:column;background:var(--white);padding:20px 24px;gap:16px;box-shadow:0 8px 24px rgba(0,0,0,.1)}
+  .nav-links.open{display:flex}
+  .nav-toggle{display:block}
 }
 
-/* Sections */
-section{position:relative;z-index:1;padding:100px 24px}
-.container{max-width:1100px;margin:0 auto}
+/* ===== HERO ===== */
+.hero{position:relative;min-height:75vh;display:flex;align-items:center;background:linear-gradient(rgba(0,48,91,0.65),rgba(0,48,91,0.55)),url('https://static.wixstatic.com/media/e2dd74_aafbce6e9fc0426097b0e683b4137641.jpg/v1/fill/w_1920,h_1080,al_c,q_85,enc_avif,quality_auto/e2dd74_aafbce6e9fc0426097b0e683b4137641.jpg') center/cover no-repeat;margin-top:80px}
+.hero-content{max-width:700px;padding:60px 48px}
+.hero h1{font-size:3.2rem;color:var(--white);margin-bottom:16px;font-weight:700}
+.hero p{font-size:1.15rem;color:rgba(255,255,255,0.9);margin-bottom:12px;font-weight:300;line-height:1.8}
+.hero .naela-badge{margin-top:32px;display:flex;align-items:center}
+.hero .naela-badge img{height:90px;width:auto;filter:brightness(1.1)}
+@media(max-width:768px){
+  .hero{min-height:60vh}
+  .hero-content{padding:40px 24px}
+  .hero h1{font-size:2.2rem}
+  .hero p{font-size:1rem}
+}
 
-/* Hero */
-.hero{min-height:100vh;display:flex;align-items:center;padding-top:72px;background:linear-gradient(135deg,var(--bg) 0%,var(--surface) 50%,var(--bg2) 100%)}
-.hero-content{max-width:650px}
-.hero h1{font-size:clamp(2.8rem,6vw,4.5rem);margin-bottom:16px;color:var(--text)}
-.hero h1 span{color:var(--accent);display:block}
-.hero .tagline{font-size:clamp(1.1rem,2.5vw,1.4rem);color:var(--text2);margin-bottom:12px;font-weight:300}
-.hero .service-area{font-size:.95rem;color:var(--text2);margin-bottom:36px;opacity:.8}
-.hero .cta-btn{display:inline-block;padding:16px 40px;background:var(--accent);color:#fff;font-weight:600;font-size:1rem;border-radius:var(--radius);transition:transform .3s,box-shadow .3s;letter-spacing:.5px}
-.hero .cta-btn:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(201,168,76,0.3);color:#fff}
+/* ===== SECTIONS ===== */
+.section{padding:80px 24px}
+.section-inner{max-width:1100px;margin:0 auto}
+.section-title{font-size:2.4rem;text-align:center;margin-bottom:48px;position:relative}
+.section-title::after{content:'';display:block;width:60px;height:3px;background:var(--teal);margin:16px auto 0}
 
-/* Stats */
-.stats{background:var(--surface);padding:50px 24px}
-.stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:32px;max-width:900px;margin:0 auto;text-align:center}
-.stat-item h3{font-size:2.4rem;color:var(--accent);font-family:var(--font-heading)}
-.stat-item p{font-size:.85rem;color:var(--text2);text-transform:uppercase;letter-spacing:1px;margin-top:4px}
+/* ===== PRACTICE AREAS ===== */
+.practice-areas{background:var(--navy)}
+.practice-areas .section-title{color:var(--white)}
+.practice-areas .section-title::after{background:var(--teal)}
+.practice-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0}
+.practice-card{padding:48px 36px;text-align:center;border-right:1px solid rgba(255,255,255,0.1);position:relative;transition:background .3s}
+.practice-card:last-child{border-right:none}
+.practice-card:hover{background:rgba(255,255,255,0.05)}
+.practice-card .icon{width:56px;height:56px;margin:0 auto 20px;display:flex;align-items:center;justify-content:center}
+.practice-card .icon svg{width:48px;height:48px;fill:var(--teal)}
+.practice-card h3{font-size:1rem;color:var(--teal);margin-bottom:16px;font-family:var(--body-font);font-weight:600;letter-spacing:.5px}
+.practice-card p{color:rgba(255,255,255,0.75);font-size:.9rem;line-height:1.7}
+@media(max-width:768px){
+  .practice-grid{grid-template-columns:1fr}
+  .practice-card{border-right:none;border-bottom:1px solid rgba(255,255,255,0.1);padding:36px 24px}
+  .practice-card:last-child{border-bottom:none}
+}
 
-/* Practice Areas */
-.practice{background:var(--bg2)}
-.section-title{text-align:center;margin-bottom:60px}
-.section-title h2{font-size:clamp(2rem,4vw,3rem);margin-bottom:12px}
-.section-title p{color:var(--text2);font-size:1.05rem;max-width:600px;margin:0 auto}
-.practice-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:28px}
-.practice-card{background:var(--glass);border:1px solid var(--glass-border);border-radius:var(--radius);padding:36px;backdrop-filter:blur(10px);transition:transform .3s,box-shadow .3s}
-.practice-card:hover{transform:translateY(-6px);box-shadow:var(--shadow)}
-.practice-card .icon{width:56px;height:56px;background:var(--accent);border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:20px}
-.practice-card .icon svg{width:28px;height:28px;stroke:#fff;fill:none;stroke-width:1.5}
-.practice-card h3{font-size:1.25rem;margin-bottom:8px;color:var(--text)}
-.practice-card .subtitle{font-style:italic;color:var(--accent2);font-size:.95rem;margin-bottom:12px}
-.practice-card p{color:var(--text2);font-size:.9rem;line-height:1.6}
-
-/* Vision */
-.vision{background:linear-gradient(135deg,var(--surface) 0%,var(--bg) 100%)}
+/* ===== OUR VISION ===== */
+.vision{background:var(--light);position:relative;overflow:hidden}
 .vision-content{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
-.vision-text h2{font-size:clamp(2rem,4vw,2.8rem);margin-bottom:24px}
-.vision-text p{color:var(--text2);font-size:1.05rem;line-height:1.8;margin-bottom:16px}
-.vision-badge{display:flex;align-items:center;justify-content:center;padding:40px;background:var(--glass);border:1px solid var(--glass-border);border-radius:var(--radius);backdrop-filter:blur(10px)}
-.vision-badge .badge-content{text-align:center}
-.vision-badge svg{width:80px;height:80px;stroke:var(--accent);fill:none;stroke-width:1;margin-bottom:16px}
-.vision-badge p{color:var(--accent);font-weight:600;font-size:1.1rem;letter-spacing:1px}
-@media(max-width:768px){.vision-content{grid-template-columns:1fr}}
+.vision-text h2{font-size:2.2rem;margin-bottom:24px;color:var(--navy)}
+.vision-text h2::after{content:'';display:block;width:50px;height:3px;background:var(--teal);margin-top:12px}
+.vision-text p{margin-bottom:16px;font-size:1rem;line-height:1.85;color:var(--text)}
+.vision-image{position:relative;border-radius:4px;overflow:hidden;box-shadow:0 16px 48px rgba(0,48,91,0.15)}
+.vision-image img{width:100%;height:100%;object-fit:cover;display:block}
+@media(max-width:768px){
+  .vision-content{grid-template-columns:1fr;gap:32px}
+  .vision-text h2{font-size:1.8rem}
+}
 
-/* Attorneys */
-.attorneys{background:var(--bg2)}
-.attorneys-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:36px;margin-top:50px}
-.attorney-card{background:var(--glass);border:1px solid var(--glass-border);border-radius:var(--radius);overflow:hidden;transition:transform .3s,box-shadow .3s;backdrop-filter:blur(10px)}
-.attorney-card:hover{transform:translateY(-6px);box-shadow:var(--shadow)}
-.attorney-photo{height:280px;background:linear-gradient(135deg,var(--surface),var(--bg));display:flex;align-items:center;justify-content:center}
-.attorney-photo svg{width:80px;height:80px;stroke:var(--text2);fill:none;stroke-width:1;opacity:.5}
-.attorney-info{padding:28px}
-.attorney-info h3{font-size:1.3rem;margin-bottom:4px}
-.attorney-info .title{color:var(--accent);font-size:.9rem;font-weight:500;margin-bottom:12px}
-.attorney-info p{color:var(--text2);font-size:.9rem;line-height:1.6}
+/* ===== PROFESSIONALS ===== */
+.professionals{background:var(--white)}
+.professional-card{text-align:center;max-width:400px;margin:0 auto}
+.professional-card .photo{width:240px;height:280px;margin:0 auto 24px;border-radius:8px;overflow:hidden;box-shadow:0 8px 32px rgba(0,48,91,0.15)}
+.professional-card .photo img{width:100%;height:100%;object-fit:cover}
+.professional-card h3{font-size:1.6rem;color:var(--navy);margin-bottom:8px}
+.professional-card .title{font-size:.9rem;color:var(--teal);font-weight:600;letter-spacing:1px;text-transform:uppercase}
 
-/* Contact */
-.contact{background:linear-gradient(135deg,var(--bg) 0%,var(--surface) 100%)}
-.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:50px}
-.contact-info h3{font-size:1.4rem;margin-bottom:20px;color:var(--accent)}
-.contact-detail{display:flex;align-items:flex-start;gap:14px;margin-bottom:20px}
-.contact-detail svg{width:22px;height:22px;stroke:var(--accent);fill:none;stroke-width:1.5;flex-shrink:0;margin-top:2px}
-.contact-detail p{color:var(--text2);font-size:.95rem;line-height:1.6}
-.contact-detail a{color:var(--accent)}
-.contact-form{background:var(--glass);border:1px solid var(--glass-border);border-radius:var(--radius);padding:36px;backdrop-filter:blur(10px)}
-.contact-form h3{font-size:1.3rem;margin-bottom:24px}
-.form-group{margin-bottom:18px}
-.form-group input,.form-group textarea{width:100%;padding:14px 18px;background:rgba(255,255,255,0.06);border:1px solid var(--glass-border);border-radius:8px;color:var(--text);font-family:var(--font-body);font-size:.95rem;transition:border-color .3s}
-.form-group input:focus,.form-group textarea:focus{outline:none;border-color:var(--accent)}
-.form-group textarea{height:120px;resize:vertical}
-.form-group input::placeholder,.form-group textarea::placeholder{color:var(--text2);opacity:.6}
-.submit-btn{width:100%;padding:16px;background:var(--accent);color:#fff;border:none;border-radius:8px;font-size:1rem;font-weight:600;cursor:pointer;transition:transform .3s,box-shadow .3s;font-family:var(--font-body);letter-spacing:.5px}
-.submit-btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(201,168,76,0.3)}
-@media(max-width:768px){.contact-grid{grid-template-columns:1fr}}
+/* ===== CONTACT ===== */
+.contact{background:var(--navy);color:var(--white)}
+.contact .section-title{color:var(--white)}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start}
+.contact-info h3{font-size:1.4rem;color:var(--white);margin-bottom:20px;font-family:var(--body-font);font-weight:600}
+.contact-info .logo-footer{margin-bottom:24px}
+.contact-info .logo-footer img{height:40px;filter:brightness(10)}
+.contact-info p{color:rgba(255,255,255,0.8);margin-bottom:8px;font-size:.95rem}
+.contact-info a{color:var(--teal);font-weight:500}
+.contact-info a:hover{color:var(--white)}
+.contact-form{display:flex;flex-direction:column;gap:16px}
+.contact-form input,.contact-form textarea{padding:14px 18px;border:1px solid rgba(255,255,255,0.2);background:rgba(255,255,255,0.08);color:var(--white);font-family:var(--body-font);font-size:.95rem;border-radius:4px;transition:border-color .3s,background .3s;outline:none}
+.contact-form input::placeholder,.contact-form textarea::placeholder{color:rgba(255,255,255,0.45)}
+.contact-form input:focus,.contact-form textarea:focus{border-color:var(--teal);background:rgba(255,255,255,0.12)}
+.contact-form textarea{min-height:140px;resize:vertical}
+.contact-form button{padding:14px 40px;background:var(--teal);color:var(--white);border:none;font-family:var(--body-font);font-size:.9rem;font-weight:600;letter-spacing:2px;text-transform:uppercase;cursor:pointer;border-radius:4px;transition:background .3s,transform .2s;align-self:flex-start}
+.contact-form button:hover{background:var(--blue-light);transform:translateY(-1px)}
+@media(max-width:768px){
+  .contact-grid{grid-template-columns:1fr;gap:40px}
+}
 
-/* Footer */
-.footer{background:var(--bg2);padding:40px 24px;text-align:center;position:relative;z-index:1;border-top:1px solid var(--glass-border)}
-.footer p{color:var(--text2);font-size:.85rem}
-.footer .formerly{font-style:italic;color:var(--text2);opacity:.6;margin-top:6px;font-size:.8rem}
+/* ===== FOOTER ===== */
+.footer{background:var(--navy-dark);text-align:center;padding:32px 24px}
+.footer p{color:rgba(255,255,255,0.5);font-size:.85rem}
+.footer a{color:var(--teal)}
+.back-to-top{display:inline-block;margin-top:12px;color:var(--teal);font-size:.8rem;letter-spacing:1px;text-transform:uppercase;font-weight:600;transition:color .3s}
+.back-to-top:hover{color:var(--white)}
 
-/* Theme switcher */
-.theme-switcher{position:fixed;bottom:24px;right:24px;z-index:9999;display:flex;gap:8px;background:rgba(0,0,0,0.4);backdrop-filter:blur(10px);padding:8px 12px;border-radius:20px;border:1px solid rgba(255,255,255,0.1)}
-.theme-dot{width:28px;height:28px;border-radius:50%;border:2px solid rgba(255,255,255,0.2);cursor:pointer;transition:transform .3s,border-color .3s}
-.theme-dot:hover{transform:scale(1.15)}
-.theme-dot.active{border-color:var(--accent);transform:scale(1.15)}
-.theme-dot[data-theme="counsel"]{background:linear-gradient(135deg,#00305B,#0F4C85)}
-.theme-dot[data-theme="justice"]{background:linear-gradient(135deg,#1a1a2e,#6c63ff)}
-.theme-dot[data-theme="parchment"]{background:linear-gradient(135deg,#faf6f0,#8b4513)}
-
-/* Scroll reveal */
+/* ===== SCROLL ANIMATIONS ===== */
 .reveal{opacity:0;transform:translateY(30px);transition:opacity .7s ease,transform .7s ease}
 .reveal.visible{opacity:1;transform:translateY(0)}
-
-/* Print */
-@media print{
-.nav,.cursor-glow,.theme-switcher,.progress-bar,.loader,#bg-canvas,canvas{display:none!important}
-section{padding:30px 0}
-body{background:#fff;color:#000}
-.practice-card,.attorney-card,.contact-form{border:1px solid #ccc;background:#f9f9f9}
-a{color:#00305B}
-}
 </style>
 </head>
 <body>
-<!-- Loader -->
-<div class="loader" id="loader"><div class="loader-icon"></div></div>
 
-<!-- Progress -->
-<div class="progress-bar" id="progress"></div>
-
-<!-- Cursor glow -->
-<div class="cursor-glow" id="glow"></div>
-
-<!-- Canvas -->
-<canvas id="bg-canvas"></canvas>
-
-<!-- Nav -->
-<nav class="nav" id="nav">
-<div class="nav-inner">
-<a href="#" class="nav-logo">Viswanath <span>Law</span></a>
-<button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
-<svg viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
-</button>
-<ul class="nav-links" id="navLinks">
-<li><a href="#hero">Home</a></li>
-<li><a href="#practice">Practice Areas</a></li>
-<li><a href="#vision">Our Vision</a></li>
-<li><a href="#attorneys">Attorneys</a></li>
-<li><a href="#contact">Contact</a></li>
-</ul>
-</div>
+<!-- NAV -->
+<nav class="nav" id="top">
+  <div class="nav-inner">
+    <a href="#top" class="nav-logo">
+      <img src="https://static.wixstatic.com/media/e2dd74_2c04c154f21b4bb2a01c8f9a8ed60c1f~mv2.png/v1/fill/w_406,h_46,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/VJ%20ALL%20BLUE.png" alt="Viswanath Law" loading="eager">
+    </a>
+    <button class="nav-toggle" aria-label="Toggle menu" onclick="document.querySelector('.nav-links').classList.toggle('open')">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links">
+      <li><a href="#top">Home</a></li>
+      <li><a href="#practice-areas">Practice Areas</a></li>
+      <li><a href="#our-vision">Our Vision</a></li>
+      <li><a href="#professionals">Professionals</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
 </nav>
 
-<!-- Hero -->
+<!-- HERO -->
 <section class="hero" id="hero">
-<div class="container">
-<div class="hero-content">
-<h1>Viswanath <span>Law Firm</span></h1>
-<p class="tagline">Specializing in Educating You Throughout The Legal Process</p>
-<p class="service-area">Servicing the entire Metro Detroit area &mdash; Wayne, Oakland, Macomb County and beyond</p>
-<a href="#contact" class="cta-btn">Schedule a Consultation</a>
-</div>
-</div>
+  <div class="hero-content">
+    <h1>Viswanath Law Firm</h1>
+    <p><em>Specializing in Educating You Throughout The Legal Process</em></p>
+    <p>Servicing the entire Metro Detroit area (Wayne, Oakland, Macomb County and beyond)</p>
+    <div class="naela-badge">
+      <img src="https://static.wixstatic.com/media/e2dd74_bf66257a5aaa4cbda8407cb17c704317.png/v1/fill/w_396,h_125,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/e2dd74_bf66257a5aaa4cbda8407cb17c704317.png" alt="NAELA Member - National Academy of Elder Law Attorneys" loading="lazy">
+    </div>
+  </div>
 </section>
 
-<!-- Stats -->
-<section class="stats">
-<div class="stats-grid">
-<div class="stat-item reveal"><h3><span class="counter" data-target="15">0</span>+</h3><p>Years Experience</p></div>
-<div class="stat-item reveal"><h3><span class="counter" data-target="12">0</span></h3><p>Practice Areas</p></div>
-<div class="stat-item reveal"><h3><span class="counter" data-target="3">0</span>+</h3><p>Counties Served</p></div>
-<div class="stat-item reveal"><h3><span class="counter" data-target="2">0</span></h3><p>Attorneys</p></div>
-</div>
+<!-- PRACTICE AREAS -->
+<section class="section practice-areas" id="practice-areas">
+  <div class="section-inner">
+    <h2 class="section-title reveal">Practice Areas</h2>
+    <div class="practice-grid">
+      <div class="practice-card reveal">
+        <div class="icon">
+          <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+        </div>
+        <h3>Helping you overcome aging or disability.</h3>
+        <p>Estate Planning, Probate, Medicaid Planning, Veterans' Benefits, Social Security Disability</p>
+      </div>
+      <div class="practice-card reveal">
+        <div class="icon">
+          <svg viewBox="0 0 24 24"><path d="M4 1h16v2H4V1zm0 20h16v2H4v-2zm12-6.5c0-2.49-2.01-4.5-4.5-4.5S7 12.01 7 14.5V17h10v-2.5zM12 7c1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3 1.34 3 3 3zm-5 7.5c0 1.38.56 2.63 1.46 3.54L12 21.5l3.54-3.46A5.008 5.008 0 0017 14.5C17 11.46 14.54 9 11.5 9S7 11.46 7 14.5z"/></svg>
+        </div>
+        <h3>Taking charge in the courtroom.</h3>
+        <p>Civil, Criminal, Family</p>
+      </div>
+      <div class="practice-card reveal">
+        <div class="icon">
+          <svg viewBox="0 0 24 24"><path d="M12 7V3H2v18h20V7H12zM6 19H4v-2h2v2zm0-4H4v-2h2v2zm0-4H4V9h2v2zm0-4H4V5h2v2zm4 12H8v-2h2v2zm0-4H8v-2h2v2zm0-4H8V9h2v2zm0-4H8V5h2v2zm10 12h-8v-2h2v-2h-2v-2h2v-2h-2V9h8v10zm-2-8h-2v2h2v-2zm0 4h-2v2h2v-2z"/></svg>
+        </div>
+        <h3>Protecting your business interests.</h3>
+        <p>Business Formation, Non-Profit Formation, Contracts, Real Estate</p>
+      </div>
+    </div>
+  </div>
 </section>
 
-<!-- Practice Areas -->
-<section class="practice" id="practice">
-<div class="container">
-<div class="section-title reveal">
-<h2>Practice Areas</h2>
-<p>Comprehensive legal services across multiple disciplines</p>
-</div>
-<div class="practice-grid">
-<div class="practice-card reveal">
-<div class="icon">
-<svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-</div>
-<h3>Elder &amp; Disability Law</h3>
-<p class="subtitle">Helping you overcome aging or disability</p>
-<p>Estate Planning, Probate, Medicaid Planning, Veterans&rsquo; Benefits, Social Security Disability</p>
-</div>
-<div class="practice-card reveal">
-<div class="icon">
-<svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-</div>
-<h3>Litigation</h3>
-<p class="subtitle">Taking charge in the courtroom</p>
-<p>Civil, Criminal, Family</p>
-</div>
-<div class="practice-card reveal">
-<div class="icon">
-<svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
-</div>
-<h3>Business Law</h3>
-<p class="subtitle">Protecting your business interests</p>
-<p>Business Formation, Non-Profit Formation, Contracts, Real Estate</p>
-</div>
-</div>
-</div>
+<!-- OUR VISION -->
+<section class="section vision" id="our-vision">
+  <div class="section-inner">
+    <div class="vision-content">
+      <div class="vision-text reveal">
+        <h2>Our Vision</h2>
+        <p>At Viswanath Law, we take it upon ourselves not only to represent you but to educate you throughout the legal process.</p>
+        <p>We will update you at each step of your case informing you what is going on and what needs to be done. You will be informed about exactly how your case is progressing. In a world full of voices telling you what's best for you, we make sure yours is the one that is heard.</p>
+        <p>We have a diverse practice which is able to represent in many areas of the law. However if our firm is not able to directly assist you, we have relationships with several attorneys and firms that have earned our trust to represent you with the highest level of professionalism and capability.</p>
+      </div>
+      <div class="vision-image reveal">
+        <img src="https://static.wixstatic.com/media/e2dd74_2da219ef5cf546a79f8f43e12a1d0f37.jpg/v1/fill/w_800,h_520,al_t,q_85,enc_avif,quality_auto/e2dd74_2da219ef5cf546a79f8f43e12a1d0f37.jpg" alt="Metro Detroit skyline" loading="lazy">
+      </div>
+    </div>
+  </div>
 </section>
 
-<!-- Vision -->
-<section class="vision" id="vision">
-<div class="container">
-<div class="vision-content">
-<div class="vision-text reveal">
-<h2>Our Vision</h2>
-<p>At Viswanath Law, we take it upon ourselves not only to represent you but to educate you throughout the legal process.</p>
-<p>We will update you at each step of your case informing you what is going on and what needs to be done. You will be informed about exactly how your case is progressing. In a world full of voices telling you what&rsquo;s best for you, we make sure yours is the one that is heard.</p>
-<p>We have a diverse practice which is able to represent in many areas of the law. However if our firm is not able to directly assist you, we have relationships with several attorneys and firms that have earned our trust to represent you with the highest level of professionalism and capability.</p>
-</div>
-<div class="vision-badge reveal">
-<div class="badge-content">
-<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/><path d="M8 2l4 2 4-2"/><path d="M8 22l4-2 4 2"/></svg>
-<p>NAELA Member</p>
-<p style="font-size:.8rem;color:var(--text2);margin-top:4px">National Academy of Elder Law Attorneys</p>
-</div>
-</div>
-</div>
-</div>
+<!-- PROFESSIONALS -->
+<section class="section professionals" id="professionals">
+  <div class="section-inner">
+    <h2 class="section-title reveal">The Professionals</h2>
+    <div class="professional-card reveal">
+      <div class="photo">
+        <img src="https://static.wixstatic.com/media/e2dd74_0f504db789dd45c69cc81dfb53861b0b.jpg/v1/fill/w_480,h_560,al_c,q_80,enc_avif,quality_auto/e2dd74_0f504db789dd45c69cc81dfb53861b0b.jpg" alt="S. K. Viswanath, Attorney" loading="lazy">
+      </div>
+      <h3>S. K. Viswanath</h3>
+      <p class="title">Attorney</p>
+    </div>
+  </div>
 </section>
 
-<!-- Attorneys -->
-<section class="attorneys" id="attorneys">
-<div class="container">
-<div class="section-title reveal">
-<h2>Our Attorneys</h2>
-<p>Experienced advocates dedicated to your legal needs</p>
-</div>
-<div class="attorneys-grid" style="max-width:420px;margin:50px auto 0">
-<div class="attorney-card reveal">
-<div class="attorney-photo" style="height:auto;background:none;padding:0">
-<img src="https://static.wixstatic.com/media/e2dd74_0f504db789dd45c69cc81dfb53861b0b.jpg/v1/fill/w_556,h_690,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/e2dd74_0f504db789dd45c69cc81dfb53861b0b.jpg" alt="S. K. Viswanath" style="width:100%;height:auto;display:block;border-radius:var(--radius) var(--radius) 0 0;object-fit:cover">
-</div>
-<div class="attorney-info">
-<h3>S. K. Viswanath</h3>
-<p class="title">Attorney</p>
-<p>Dedicated to providing comprehensive legal counsel across elder law, estate planning, and business matters throughout Metro Detroit.</p>
-</div>
-</div>
-</div>
-</div>
+<!-- CONTACT -->
+<section class="section contact" id="contact">
+  <div class="section-inner">
+    <h2 class="section-title reveal">Contact Viswanath Law</h2>
+    <div class="contact-grid">
+      <div class="contact-info reveal">
+        <div class="logo-footer">
+          <img src="https://static.wixstatic.com/media/e2dd74_2c04c154f21b4bb2a01c8f9a8ed60c1f~mv2.png/v1/fill/w_406,h_46,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/VJ%20ALL%20BLUE.png" alt="Viswanath Law">
+        </div>
+        <h3>Our Address</h3>
+        <p>17520 W. 12 Mile Rd, Ste. 209</p>
+        <p>Southfield, MI 48076</p>
+        <p style="margin-top:16px">Email: <a href="mailto:contact@skvfirm.com">contact@skvfirm.com</a></p>
+        <p>Tel: <a href="tel:+18668781443">866.878.1443</a></p>
+        <p style="margin-top:24px;font-style:italic;color:rgba(255,255,255,0.5);font-size:.85rem">*Formerly known as the SKV Firm, PLC</p>
+        <p style="color:rgba(255,255,255,0.5);font-size:.85rem">Servicing the entire Metro Detroit area (Wayne, Oakland, Macomb County and beyond)</p>
+      </div>
+      <div class="contact-form reveal">
+        <p style="color:rgba(255,255,255,0.7);margin-bottom:8px;font-size:.95rem">For any general inquiries, please fill in the following contact form:</p>
+        <input type="text" name="name" placeholder="Name *" required>
+        <input type="email" name="email" placeholder="Email *" required>
+        <input type="text" name="subject" placeholder="Subject">
+        <textarea name="message" placeholder="Message"></textarea>
+        <button type="submit" onclick="handleSubmit(event)">Send</button>
+      </div>
+    </div>
+  </div>
 </section>
 
-<!-- Contact -->
-<section class="contact" id="contact">
-<div class="container">
-<div class="section-title reveal">
-<h2>Contact Us</h2>
-<p>Ready to discuss your legal needs? Reach out today.</p>
-</div>
-<div class="contact-grid">
-<div class="contact-info reveal">
-<h3>Our Office</h3>
-<div class="contact-detail">
-<svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-<p>17520 W. 12 Mile Rd, Ste. 209<br>Southfield, MI 48076</p>
-</div>
-<div class="contact-detail">
-<svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-<p><a href="tel:+18668781443">866.878.1443</a></p>
-</div>
-<div class="contact-detail">
-<svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-<p><a href="mailto:contact@skvfirm.com">contact@skvfirm.com</a></p>
-</div>
-<div class="contact-detail">
-<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-<p>Servicing the entire Metro Detroit area<br>Wayne, Oakland, Macomb County and beyond</p>
-</div>
-</div>
-<div class="contact-form reveal">
-<h3>Send Us a Message</h3>
-<form id="contactForm" action="https://formsubmit.co/skvlaw@gmail.com" method="POST">
-<input type="hidden" name="_subject" value="New Contact from ViswanathLaw.com">
-<input type="hidden" name="_captcha" value="false">
-<input type="hidden" name="_next" value="https://viswanathlaw.com/?sent=1">
-<input type="text" name="_honey" style="display:none">
-<div class="form-group"><input type="text" name="name" placeholder="Your Name" required></div>
-<div class="form-group"><input type="email" name="email" placeholder="Your Email" required></div>
-<div class="form-group"><input type="tel" name="phone" placeholder="Your Phone"></div>
-<div class="form-group"><textarea name="message" placeholder="How can we help you?" required></textarea></div>
-<button type="submit" class="submit-btn">Send Message</button>
-</form>
-</div>
-</div>
-</div>
-</section>
-
-<!-- Footer -->
+<!-- FOOTER -->
 <footer class="footer">
-<div class="container">
-<p>&copy; 2025 Viswanath Law. All rights reserved.</p>
-<p class="formerly">Formerly known as the SKV Firm, PLC</p>
-</div>
+  <p>&copy; 2025 Viswanath Law. All rights reserved.</p>
+  <a href="#top" class="back-to-top">Back to Top</a>
 </footer>
 
-<!-- Theme Switcher -->
-<div class="theme-switcher">
-<div class="theme-dot active" data-theme="counsel" title="Counsel"></div>
-<div class="theme-dot" data-theme="justice" title="Justice"></div>
-<div class="theme-dot" data-theme="parchment" title="Parchment"></div>
-</div>
-
 <script>
-// Loader
-window.addEventListener('load',()=>{setTimeout(()=>{document.getElementById('loader').classList.add('hide')},600)});
-
-// Progress bar
-window.addEventListener('scroll',()=>{const s=document.documentElement.scrollTop,h=document.documentElement.scrollHeight-window.innerHeight;document.getElementById('progress').style.width=(s/h*100)+'%'});
-
-// Cursor glow
-const glow=document.getElementById('glow');
-document.addEventListener('mousemove',e=>{glow.style.left=e.clientX+'px';glow.style.top=e.clientY+'px'});
-
-// Nav toggle
-document.getElementById('navToggle').addEventListener('click',()=>{document.getElementById('navLinks').classList.toggle('open')});
-document.querySelectorAll('.nav-links a').forEach(a=>a.addEventListener('click',()=>{document.getElementById('navLinks').classList.remove('open')}));
-
-// Hide nav on scroll down
-let lastScroll=0;
-window.addEventListener('scroll',()=>{const st=window.scrollY;document.getElementById('nav').classList.toggle('hidden',st>lastScroll&&st>200);lastScroll=st});
-
 // Scroll reveal
-const observer=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target)}})},{threshold:.1});
-document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+const revealEls = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }});
+}, { threshold: 0.15 });
+revealEls.forEach(el => observer.observe(el));
 
-// Counters
-const counterObs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){const el=e.target,target=+el.dataset.target;let count=0;const inc=target/40;const timer=setInterval(()=>{count+=inc;if(count>=target){el.textContent=target;clearInterval(timer)}else{el.textContent=Math.ceil(count)}},30);counterObs.unobserve(el)}})},{threshold:.5});
-document.querySelectorAll('.counter').forEach(el=>counterObs.observe(el));
-
-// Themes
-const themes=document.querySelectorAll('.theme-dot');
-const saved=localStorage.getItem('vl-theme');
-if(saved){document.documentElement.dataset.theme=saved;themes.forEach(d=>{d.classList.toggle('active',d.dataset.theme===saved)})}
-themes.forEach(dot=>{dot.addEventListener('click',()=>{const t=dot.dataset.theme;document.documentElement.dataset.theme=t==='counsel'?'':t;localStorage.setItem('vl-theme',t);themes.forEach(d=>d.classList.toggle('active',d.dataset.theme===t))})});
+// Nav active state
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('.nav-links a');
+window.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach(s => { if (window.scrollY >= s.offsetTop - 120) current = s.getAttribute('id'); });
+  navLinks.forEach(a => {
+    a.classList.remove('active');
+    if (a.getAttribute('href') === '#' + current) a.classList.add('active');
+  });
+  // Close mobile nav on scroll
+  document.querySelector('.nav-links').classList.remove('open');
+});
 
 // Contact form
-// Show success message if redirected back after form submit
-if(window.location.search.includes('sent=1')){const f=document.getElementById('contactForm');if(f){const msg=document.createElement('div');msg.style.cssText='background:#28a745;color:#fff;padding:16px;border-radius:8px;text-align:center;margin-bottom:16px;font-weight:600';msg.textContent='Message sent! We will be in touch shortly.';f.parentNode.insertBefore(msg,f);setTimeout(()=>msg.remove(),8000);history.replaceState(null,'',window.location.pathname)}}
+function handleSubmit(e) {
+  e.preventDefault();
+  const form = e.target.closest('.contact-form');
+  const name = form.querySelector('[name="name"]').value;
+  const email = form.querySelector('[name="email"]').value;
+  const subject = form.querySelector('[name="subject"]').value;
+  const message = form.querySelector('[name="message"]').value;
+  if (!name || !email) { alert('Please fill in the required fields.'); return; }
+  const mailtoLink = 'mailto:contact@skvfirm.com?subject=' + encodeURIComponent(subject || 'Website Inquiry from ' + name) + '&body=' + encodeURIComponent('Name: ' + name + '\nEmail: ' + email + '\n\n' + message);
+  window.location.href = mailtoLink;
+}
 
-// Canvas particles
-const canvas=document.getElementById('bg-canvas'),ctx=canvas.getContext('2d');
-let particles=[];
-function resizeCanvas(){canvas.width=window.innerWidth;canvas.height=window.innerHeight}
-resizeCanvas();window.addEventListener('resize',resizeCanvas);
-function createParticles(){particles=[];const n=Math.min(60,Math.floor(window.innerWidth/20));for(let i=0;i<n;i++){particles.push({x:Math.random()*canvas.width,y:Math.random()*canvas.height,vx:(Math.random()-.5)*.3,vy:(Math.random()-.5)*.3,r:Math.random()*2+1})}}
-createParticles();
-function drawParticles(){ctx.clearRect(0,0,canvas.width,canvas.height);const style=getComputedStyle(document.documentElement);const accent=style.getPropertyValue('--accent').trim()||'#c9a84c';particles.forEach((p,i)=>{p.x+=p.vx;p.y+=p.vy;if(p.x<0||p.x>canvas.width)p.vx*=-1;if(p.y<0||p.y>canvas.height)p.vy*=-1;ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fillStyle=accent;ctx.globalAlpha=.15;ctx.fill();ctx.globalAlpha=1;particles.forEach((p2,j)=>{if(j<=i)return;const dx=p.x-p2.x,dy=p.y-p2.y,dist=Math.sqrt(dx*dx+dy*dy);if(dist<150){ctx.beginPath();ctx.moveTo(p.x,p.y);ctx.lineTo(p2.x,p2.y);ctx.strokeStyle=accent;ctx.globalAlpha=.04*(1-dist/150);ctx.stroke();ctx.globalAlpha=1}})});requestAnimationFrame(drawParticles)}
-drawParticles();
+// Smooth scroll for nav links
+document.querySelectorAll('.nav-links a').forEach(a => {
+  a.addEventListener('click', () => document.querySelector('.nav-links').classList.remove('open'));
+});
 </script>
 </body>
 </html>
